@@ -11,7 +11,6 @@ module cpu_tb;
     .rst(rst)
   );
 
-  // Clock: 10 ns period
   always #5 clk = ~clk;
 
   initial begin
@@ -22,17 +21,13 @@ module cpu_tb;
     #20;
     rst = 0;
 
-    // Run for some cycles
+    // Run
     repeat (50) @(posedge clk);
 
     $display("TB bring-up completed");
     $finish;
   end
 
-  // Waveform
-  initial begin
-    $dumpfile("cpu.vcd");
-    $dumpvars(0, cpu_tb);
-  end
+
 
 endmodule
