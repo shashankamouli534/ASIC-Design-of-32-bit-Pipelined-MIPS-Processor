@@ -11,18 +11,17 @@ module cpu_tb;
     .rst(rst)
   );
 
-  // Clock: 10 ns period
+  //  10 ns 
   always #5 clk = ~clk;
 
   initial begin
     clk = 0;
     rst = 1;
 
-    // Hold reset
+  
     #20;
     rst = 0;
 
-    // Run for some cycles
     repeat (50) @(posedge clk);
 
     $display("TB bring-up completed");
